@@ -1,0 +1,18 @@
+Market Status1 for US Equities CA
+================================
+:author:    Maxim Polesin
+:email:     maximp@cqg.com
+:revdate:   Sep 12, 2022
+:revnumber: 1.0.0
+:revremark: Initial Revision
+:sectnums:
+:sectnumlevels: 5
+:toc:
+:toc-placement!:
+
+
+[plantuml, puml, svg]
+@startuml
+    Alice -> Bob: Hello
+@enduml
+
