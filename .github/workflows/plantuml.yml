@@ -16,20 +16,16 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Set up Java
-      uses: actions/setup-java@v2
-      with:
-        java-version: '21'
-
-    - name: Install PlantUML
-      run: sudo apt-get install plantuml
-
     - name: Generate Diagrams
       run: |
-        plantuml diagrams/context/*.puml
-        plantuml diagrams/container/*.puml
-        plantuml diagrams/component/*.puml
-        plantuml diagrams/code/*.puml
+        docker run --rm -v ${{github.workspace}}/Fitlife/diagrams:/diagrams \
+               plantuml/plantuml /diagrams/context/"*.puml"
+        docker run --rm -v ${{github.workspace}}/Fitlife/diagrams:/diagrams \
+               plantuml/plantuml /diagrams/container/"*.puml"
+        docker run --rm -v ${{github.workspace}}/Fitlife/diagrams:/diagrams \
+               plantuml/plantuml /diagrams/component/"*.puml"
+        docker run --rm -v ${{github.workspace}}/Fitlife/diagrams:/diagrams \
+               plantuml/plantuml /diagrams/code/"*.puml"
 
     - name: Commit Diagrams
       run: |
